@@ -30,6 +30,7 @@ const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
 const passwordPattern= /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()_+{}":;'?/>.<,])(?=.{8,})/;
 
 let password=null;
+let passwordError=null;
 let confirmPassword =null;
 let confirmPasswordError=null;
 
@@ -41,12 +42,17 @@ const registrationForm=document.getElementById("registrationForm");
 if (registrationForm){
     //Get the values of passwords after entering 
     password = document.getElementById('password');
+    passwordError = document.getElementById('passwordError');
     confirmPassword = document.getElementById('confirm_password');
     confirmPasswordError = document.getElementById('confirmPasswordError');
 
     // Get the value of age input
     age = document.getElementById("age");
-     ageError = document.getElementById("ageError");
+     ageError = document.getElementById("ageError"); 
+
+     const weight = document.getElementById("weight");
+     const weightError = document.getElementById("weightError");
+
 
     registrationForm.addEventListener("submit", function(event) {
         //For the field Full Name
@@ -125,8 +131,20 @@ if (registrationForm){
              ageError.textContent = "Age must be between 10 and 100.";
              event.preventDefault();  // Stop form submission
           }
-    
+          //Weight Validations
+          
+          const weightValue=weight.value.trim();
+          weightError.textContent = "";
+          
       
+          if (weightValue === "") {
+              weightError.textContent = "Weight is required.";
+              event.preventDefault();
+          } else if (isNaN(weightValue) || weightValue < 20 || weightValue > 200) {
+              weightError.textContent = "Weight must be a number between 20 and 200 kg.";
+              event.preventDefault();
+          }
+
         
        
     

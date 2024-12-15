@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Frontend',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -70,14 +71,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Nutrition_Analyzing_Website.wsgi.application'
 
-
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'nutrition_db', #mysql database 
+        'USER':'root', #mysql username 
+        'PASSWORD':'Saloni@123',
+        'HOST':'localhost',
+        'PORT':'3306', 
+        
     }
 }
 
@@ -99,6 +105,15 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+AUTHENTICATION_BACKENDS=[
+   
+    'django.contrib.auth.backends.ModelBackend', #Default backend 
+    
+] 
+
+# AUTH_USER_MODEL = 'accounts.User'
+
 
 
 # Internationalization
