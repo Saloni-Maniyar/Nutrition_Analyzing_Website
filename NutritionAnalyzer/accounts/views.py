@@ -106,7 +106,8 @@ def login_view(request):
                 login(request, user)  # Log the user in
                 messages.success(request, 'Login successful!')
                 print("Authentication successful")
-                return redirect('home')  # Redirect to home page after successful login
+                # return redirect('home')  # Redirect to home page after successful login
+                return render(request, 'index.html', {'user': user})
             else:
                 messages.error(request, 'Invalid credentials')
                 print("Authentication failed - wrong password")

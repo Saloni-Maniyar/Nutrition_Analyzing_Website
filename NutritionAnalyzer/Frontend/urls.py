@@ -32,4 +32,5 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('analyze/', views.analyze, name='analyze'),
     path('track/', views.track, name='track'),
+     path('profile/', views.profile, name='profile'),
 ]

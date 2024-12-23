@@ -52,6 +52,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'Nutrition_Analyzing_Website.urls'
+LOGIN_URL = 'login'
 
 TEMPLATES = [
     {
@@ -71,7 +72,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Nutrition_Analyzing_Website.wsgi.application'
 
-SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False 
+SESSION_COOKIE_AGE = 3600  # 1 hour (time before session expires)
+
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
